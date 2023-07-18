@@ -1,8 +1,9 @@
 pandas==2.0.3
 numpy==1.25.1
 requests==2.31.0
-GDAL==3.7.0
-geopandas==0.13.2
+GDAL==3.6.3
+geopandas==0.12.2
 folium==0.14.0
 shapely==2.0.1
 geopy==2.3.0
+notebook==6.5.4
