@@ -4,6 +4,8 @@ import geopandas as gpd
 import requests
 import numpy as np
 
+MAPBOX_TOKEN = 'your_api_key_here'
+
 def get_lib_gdf(lib_file_path): 
     libs = pd.read_csv(lib_file_path)
     libs.columns = map(str.lower, libs.columns)
