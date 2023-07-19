@@ -65,6 +65,8 @@ def driving_dist(tract, library):
 
 
 def assignment_dataframes2(boundary_df, library_df, meters):
+    CRS = "EPSG:4326"
+    calc_CRS = "EPSG:3857"
 
     # create buffer geometry around library and convert mile into meters (~1609 meters)
     
@@ -101,14 +103,3 @@ def assignment_dataframes2(boundary_df, library_df, meters):
     return intersect_area_dist
 
 
-def acs_cleaning(acs_filepath): 
-    acs_data = pd.read_csv(acs_filepath)
-    acs_data = acs_data.loc[acs_data.loc[:,'county'] == 31,] 
-    acs_data.loc[:,'geoid10'] = acs_data.loc[:,'geo_id'].str.split('1400000US',expand=True).loc[:,1]
-    acs_data.loc[:,'geoid10'] = acs_data.loc[:,'geoid10'].astype('int')
-    invalid_values = [-666666666, -999999999]
-    non_changeable_cols = ["tract", "county", "geo_id", "census_name", "state", "geoid10"]
-    cols_mod = [ col for col in acs_data.columns if col not in non_changeable_cols]
-    acs_data.loc[:, cols_mod] = acs_data.loc[:, cols_mod].replace(invalid_values, np.nan)
-
-    joined_df.loc[:,'geoid10'] = joined_df.loc[:,'geoid10'].astype('int')
