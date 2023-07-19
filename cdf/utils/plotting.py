@@ -36,7 +36,6 @@ def adding_folium_layers(joined_df, boundaries, address, given_map):
     census_lst = cts.loc[:, 'namelsad10'].to_list()
     df = boundaries[boundaries.loc[:, 'namelsad10'].isin(census_lst)]
 
-
     # calling the color assigned for style function
     color = cts.loc[:, 'color_x'].iloc[0]
     
@@ -48,7 +47,7 @@ def adding_folium_layers(joined_df, boundaries, address, given_map):
     
     # creating layer for folium using style function
     l = folium.GeoJson(
-        df,
+        df[["geometry"]],
         name='Boundaries',
         style_function=style_function,
         control = False)
