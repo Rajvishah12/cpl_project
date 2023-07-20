@@ -90,7 +90,6 @@ def assignment_dataframes2(boundary_df, library_df, meters):
     
     interesect_df.loc[:, 'centroid'] = interesect_df.loc[:, 'centroid'].to_crs(CRS)
     
-#     interesect_df.loc[:, 'distance'] = interesect_df.loc[:, 'lib_geometry'].distance(interesect_df.loc[:, 'centroid'])
     interesect_df.loc[:, 'distance'] = interesect_df.apply(lambda row: driving_dist(row['lib_geometry'],\
                                                                                     row['centroid']), axis=1)
     interesect_df = interesect_df.to_crs(calc_CRS)
