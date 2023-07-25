@@ -8,4 +8,8 @@ The utils folder in this repository contains various utility functions and scrip
 
 **plotting.py** - This script contains functions for plotting folium maps
 
-**utils.py** - This script contains funcitons for reading data and components essential to the development of methodologies.
+**get_data.py** - This script contains funcitons for loading data.
+
+**assignment_centroid_euclideandists.py** - This script defines class for assignment based on shortest driving ditance. 
+
+**assignment_area_drivingdists.py** - This script defines class for assignment based on shortest driving ditance. 
