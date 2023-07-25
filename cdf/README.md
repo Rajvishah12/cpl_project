@@ -26,6 +26,31 @@ Software Setup
    ```sh
    docker run --platform=linux/amd64 -e "REPOPATH=`readlink -f $1`" -e "LINT=$2" -v $REPOPATH:/container-repo-mount cpl_image
    ```
+   
+### APIs
+
+There are scripts and notebooks that **require** API keys.
+
+In order to access **American Community Survey (ACS) census data**, you
+will need to create an API key. The ACS is conducted by the United 
+States Census Bureau and provides valuable demographic, social, 
+economic, and housing data for various geographic regions in the 
+United States.
+
+Request Census API key [here](https://api.census.gov/data/key_signup.html).
+Census Data API User Guide [here](https://www.census.gov/data/developers/guidance/api-user-guide.html).
+
+
+The **Mapbox Directions API** will show you how to get where you're going. 
+We used this API to calculate optimal driving routes for the second methodology
+for assigning census tracts to libraries.
+
+Documentation found [here](https://docs.mapbox.com/api/navigation/directions/).
+Create an account with MapBox [here](https://account.mapbox.com/auth/signup/) to 
+generate a personal API key.
+
+*Please do not commit/push API keys to the repo.*
+
 
 ### Directory Structure
 
