@@ -18,6 +18,7 @@ class assignment_area_drivingdists:
         Inputs:
             - lib_file_path: file path for library location dataset
             - ct_file_path: file path for census tract boundary
+            - MAPBOX_TOKEN: your mapbox token for calculating driving distance
         """
 
         calc_CRS = "EPSG:3857"
@@ -26,6 +27,16 @@ class assignment_area_drivingdists:
         self.api = MAPBOX_TOKEN
 
     def driving_dist(self, tract, library):
+        """
+        This function calculates driving distance from a library to a census block centroid
+
+        Inputs:
+            - tract: census tract centroid geometry
+            - library: library geometry
+
+        Return: 
+            - dist: distance between the two input
+        """
         try:
             slat = str(tract.y)
             slng = str(tract.x)
@@ -43,11 +54,22 @@ class assignment_area_drivingdists:
         return dist
 
     def assignment(self, boundary_df, library_df, meters):
+        """
+        This function assign census tract based on major overlapping area with meters lib bufferzone
+
+        Inputs:
+            - boundary_df: census tract geodataframe
+            - library_df: library geodataframe 
+            - meters: chosen meters for library buffer zone
+
+        Return: 
+            - intersect_area_dist: joined dataframe for overlapping census tract and library
+        """
+
         CRS = "EPSG:4326"
         calc_CRS = "EPSG:3857"
 
-        # create buffer geometry around library and convert mile into meters (~1609 meters)
-        
+        # create buffer geometry around library and convert mile into meters
         library_df.loc[:, 'bufferzone'] = library_df['geometry'].buffer(meters)
         library_df.set_geometry('bufferzone', inplace=True)
         
@@ -80,6 +102,13 @@ class assignment_area_drivingdists:
         return intersect_area_dist
     
     def assignment_dataframes(self): 
+        """
+        This function assign all census tract to each library
+
+        Return: 
+            - joined_df: joined dataframe for each census tract and library
+        """
+                
         CRS = "EPSG:4326"
         calc_CRS = "EPSG:3857"
                 
