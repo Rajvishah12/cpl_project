@@ -1,5 +1,5 @@
 import geopandas as gpd
-from .utils import get_lib_gdf, get_ct_gdf
+from .get_data import get_lib_gdf, get_ct_gdf
 from .plotting import creating_foliumn_map
 from .acs_agg import acs_cleaning, acs_join
 
