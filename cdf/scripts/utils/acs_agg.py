@@ -2,6 +2,9 @@ import pandas as pd
 import numpy as np
 
 def acs_cleaning(acs_filepath): 
+    """
+    This function cleans census dataset and returns a pandas dataframe for merging. 
+    """
     acs_data = pd.read_csv(acs_filepath)
     acs_data = acs_data.loc[acs_data.loc[:,'county'] == 31,] 
     acs_data.loc[:,'geoid10'] = acs_data.loc[:,'geo_id'].str.split('1400000US',expand=True).loc[:,1]
@@ -13,6 +16,10 @@ def acs_cleaning(acs_filepath):
     return acs_data
 
 def acs_merge(acs_data, joined_df):
+    """
+    This function merges census information with assigned census tract dataframe, and
+    returns a dataframe that contain census information for each census tract that is assigned to a library
+    """
     joined_df.loc[:,'geoid10'] = joined_df.loc[:,'geoid10'].astype('int')
     libs_tracts = joined_df.loc[:,['name','geoid10']].drop_duplicates()
     libs_tracts.rename(columns={'name':'lib_name'},inplace = True)
@@ -24,6 +31,9 @@ def acs_merge(acs_data, joined_df):
     return merged_df
 
 def acs_agg(acs_data, merged_df): 
+    """
+    This function aggregates census information for all library
+    """
     id_vars = ['tract','county','geo_id','census_name','state','geoid10'] #variables that are identifiers (no aggregation)
     avg_vars = (['median_age','perc_hh_w_children','avg_household_size',
                 'avg_family_size','unemployment_rate','median_hh_income_d',
@@ -43,6 +53,16 @@ def acs_agg(acs_data, merged_df):
     return agg_df
 
 def acs_join(acs_data, joined_df): 
+    """
+    This function aggregates census information for each library based on the census tract assignment
+
+    Input: 
+        - acs_data: pandas dataframe for census data
+        - joined_df: joined dataframe for each census tract and library based on assignment
+
+    Output: 
+        - agg_df: aggregated dataframe containing census information for each library
+    """
     merged_df = acs_merge(acs_data, joined_df)
     agg_df = acs_agg(acs_data, merged_df)
     return agg_df
