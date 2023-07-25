@@ -17,8 +17,6 @@ Files:
 
 **census_tract_data.csv** - unaggregated data at the census tract level for all of Cook County including tracts outside of Chicago
 
-**lib_tract.csv** - mapping of libraries to census tracts
-
 **vars_dict_operations.xlsx** - created a data dictionary to map census variable codes, variable names, and aggregation operations which was also provided to CPL partner
 
 
