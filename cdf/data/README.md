@@ -7,16 +7,17 @@ We used three main data sources for this project:
 
     3. American Community Survey (ACS): json file obtained from an API call (See **notebooks/acs_pull.py** ) to the Census Bureau with several demographic variables to define each census tract characteristics. Variables selected by CPL.
 
+
 Files:
 
-**library_locations** - csv provided to us from CPL partner with all the information for each library branch
-
-**census_cook_county_dta.json** - census api call output from notebooks/acs_pull.py. Need API key to run
+**census_cook_county_dta.csv** - census api call output from notebooks/acs_pull.py. Need API key to run
 
 **census_tract_boundaries.geojson** - census tract boundaries retrieved from github
 
-**census_tract_data.csv** - unaggregated data at the census tract level for all of Cook County including tracts outside of Chicago
+**library_locations** - csv provided to us from CPL partner with all the information for each library branch
 
-**vars_dict_operations.xlsx** - created a data dictionary to map census variable codes, variable names, and aggregation operations which was also provided to CPL partner
+**census_tract_data.csv** - output from notebooks/acs_pull.py and used for aggregations based on assignments
+
+
 
 
