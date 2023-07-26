@@ -109,9 +109,6 @@ class assignment_area_drivingdists:
             - joined_df: joined dataframe for each census tract and library
         """
                 
-        CRS = "EPSG:4326"
-        calc_CRS = "EPSG:3857"
-                
         libs = self.libs
         cts = self.cts
 
