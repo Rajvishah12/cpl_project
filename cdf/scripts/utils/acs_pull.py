@@ -10,8 +10,8 @@
 
 import requests
 import pandas as pd
-import numpy as np
-from ..constants import API_KEY
+
+API_KEY = 'your_api_key_here'
 
 DIRECTORY = "./cpl_project/cdf/data/"
 
@@ -31,7 +31,7 @@ class CensusAPI:
               consulted
         """
 
-        assert isinstance(year, int), f"year parameter is 'str' and should be 'int'"
+        assert isinstance(year, int), "year parameter is 'str' and should be 'int'"
 
         self.base_url_macro_table = (
             "https://api.census.gov/data/" + str(year) + "/acs/acs5"
