@@ -65,11 +65,18 @@ generate a personal API key.
 │   ├── census_tract_boundaries.geojson
 │   ├── library_locations.csv
 │   └── census_tract_data.csv
-├── notebooks/
+├── scripts/
 │   ├── README.md
 │   ├── assignments_area_drivingdists.ipynb
 │   ├── assignments_centroids_euclideandists.ipynb
-│   └── acs_pull.py
+│   └── utils/
+│       ├── README.md
+│       ├── acs_agg.py
+│       ├── acs_pull.py
+│       ├── assignment_area_drivingdists.py
+│       ├── assignment_centroid_euclideandists.py
+│       ├── get_data.py
+│       └── plotting.py
 ├── output/
 │   ├── README.md
 │   ├── cpl_assignments.html
@@ -77,9 +84,4 @@ generate a personal API key.
 │   ├── lib_tract.csv
 │   ├── library_locations.csv
 │   └── vars_dict_operations.xlsx
-├── utils/
-│   ├── README.md
-│   ├── acs_agg.py
-│   ├── plotting.py
-│   └── utils.py
 ```
